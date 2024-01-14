@@ -62,7 +62,7 @@ export default function SignUp() {
 
     const history = useHistory();
 
-    const handler = async (event) => {    
+    const handler = async (event) => {   
       await axiosInstance.post('user/register/', {
         email: event['email'],
         password: event['password'],
