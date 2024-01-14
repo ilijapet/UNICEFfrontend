@@ -1,70 +1,111 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Here on this address you can find video walkthrough for Dapp
 
-## Available Scripts
+   
+[UNICEFDapp](https://www.youtube.com/watch?v=yh1T1yDjMlM)
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## React front-end
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. clone repo
 
-### `npm test`
+    `git clone https://github.com/ilijapet/UNICEFfrontend`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install dependencies
 
-### `npm run build`
+    `npm isntall  --legacy-peer-deps`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Create .env in React project root folder with following values
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    `REACT_APP_HOST=http://localhost:3000
+    REACT_APP_BACKEND_HOST=http://127.0.0.1:8000
+    REACT_APP_CONTRACTADDRESS=0x1fA99bB28cc817aAc2B5D35bE56c0121DAdC8E0F
+    REACT_APP_WALLETCONNECT_PROJECT_ID=here_put_your_wallet_connect_id`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Run development server
 
-### `npm run eject`
+    `npm start`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Smart contracts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. clone repo
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    `git clone https://github.com/ilijapet/UNICEFsmartcontracts`
 
-## Learn More
+2. Install Foundry. Check for instruciton on following link
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    `https://book.getfoundry.sh/getting-started/installation`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. run tests
 
-### Code Splitting
+    `forge test`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+You should see something like this:
 
-### Analyzing the Bundle Size
+    [⠊] Compiling...
+    [⠰] Compiling 31 files with 0.8.20
+    [⠒] Solc 0.8.20 finished in 4.38sCompiler run successful!
+    [⠑] Solc 0.8.20 finished in 4.38s
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    Running 2 tests for test/Donation.t.sol:ContractBTest
+    [PASS] testClaimUnicefCoins() (gas: 59338)
+    [PASS] testDonate() (gas: 36720)
+    Test result: ok. 2 passed; 0 failed; 0 skipped; finished in 4.50ms
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Django Backend
 
-### Advanced Configuration
+1. clone repo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    `git clone https://github.com/ilijapet/UNICEFbackend`
 
-### Deployment
+2. Install Docker
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    `https://docs.docker.com/get-docker/`
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Install Gunicorn 
+
+    `https://docs.gunicorn.org/en/stable/install.html`
+
+4. Install Postgres
+
+    `https://www.postgresql.org/download/`
+
+
+5. Install Poetry
+
+    `https://python-poetry.org/docs/#installation`
+
+
+6. Activate environment from backend root directory
+
+    `poetry shell`
+
+
+7. Make migrations
+
+    `make migrations`
+
+8. Run postgres from root
+
+    `make up-dependencies-only`
+
+
+9. If you don't have make in root of UNICEFbackend tow new folders with following files
+
+    `/var/log/gunicorn/dev.log`
+    `/var/run/gunicorn/dev.pid
+`
+
+10. In separate terminal (same folder) run Gunicorn
+
+   `make gunicorn-dev`
+
+
+Now you should be able to use Dapp locally!
+
+
+
